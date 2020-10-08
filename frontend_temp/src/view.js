@@ -36,7 +36,7 @@ function setup() {
     bars.push(new Bar(450, 70))
     bars.push(new Bar(750, 70))
 
-    bars[0].init([180, 170, 160, 150])
+    bars[0].init([180, 200, 170, 160, 150])
     bars[2].init([180, 140])
     bars[2].push(120)
 

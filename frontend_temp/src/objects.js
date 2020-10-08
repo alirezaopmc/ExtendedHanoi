@@ -24,10 +24,13 @@ class Bar {
         disks.forEach(radius => {
             this.disks.push(new Disk(radius))
         })
+        this.update()
     }
 
     update() {
-        this.disks.sort()
+        this.disks.sort(function(a, b) {
+            return a.radius - b.radius
+        })
         let diff = 0
         this.disks.forEach(disk => {
             let x = this.x
@@ -42,6 +45,7 @@ class Bar {
         let top = this.disks.slice(-1)[0]
         let disk = new Disk(radius)
         this.disks.push(disk)
+        this.update()
     }
 
     pop() {
@@ -50,7 +54,6 @@ class Bar {
 
     render() {
         line(this.x, this.y, this.x, 650 - this.y)
-        this.update()
         this.disks.forEach(disk => {
             rect(disk.x, disk.y, disk.width, disk.height)
         })
