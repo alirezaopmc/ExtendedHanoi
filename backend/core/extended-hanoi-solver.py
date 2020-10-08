@@ -16,7 +16,7 @@ if len(arguments) > 1:
 bars = list(map(lambda r: list(map(int, r.split(','))), hanoiString))
 for x in bars:
     x.reverse()
-n = len(sum(bars))
+n = len(bars[0] + bars[1] + bars[2])
 found = 0
 current_bar = -1
 fount_at = -1
