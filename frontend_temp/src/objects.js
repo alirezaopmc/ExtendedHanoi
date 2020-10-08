@@ -19,7 +19,7 @@ class Bar {
     }
 
     init(disks) {
-        disks.sort().reverse();
+        // disks.sort().reverse();
         disks.forEach(radius => {
             this.disks.push(new Disk(radius))
         })
@@ -32,6 +32,14 @@ class Bar {
             disk.y = y
             diff += disk.height
         }
+    }
+
+    push(radius) {
+        let top = this.disks.slice(-1)[0]
+        let disk = new Disk(radius)
+        disk.x = top.x
+        disk.y = top.y - top.height / 2 - disk.height / 2
+        this.disks.push(disk)
     }
 
     render() {

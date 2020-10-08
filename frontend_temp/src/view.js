@@ -8,6 +8,7 @@ function setup() {
 
     bars[0].init([180, 170, 160, 150])
     bars[2].init([180, 140])
+    bars[2].push(120)
 
     rectMode(CENTER)
 }
