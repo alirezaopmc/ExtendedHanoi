@@ -31,7 +31,7 @@ def look_up():
 def move(from_bar : int, to_bar : int):
     global output
     bars[to_bar].append(bars[from_bar].pop())
-    output += str(from_bar) + str(to_bar)
+    output += str(from_bar) + str(to_bar) + ','
     if debug: print('moved {} to {}'.format(from_bar, to_bar))
 
 
