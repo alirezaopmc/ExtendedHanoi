@@ -16,7 +16,7 @@ if len(arguments) > 1:
 bars = list(map(lambda r: list(map(int, r.split(','))), hanoiString))
 for x in bars:
     x.reverse()
-n = len(bars[0])
+n = len(sum(bars))
 found = 0
 current_bar = -1
 fount_at = -1
@@ -55,7 +55,7 @@ def update():
 
 def is_done():
     for i in range(len(bars)):
-        if len(bars[i]) == 3 * n:
+        if len(bars[i]) == n:
             return True
     return False
 
