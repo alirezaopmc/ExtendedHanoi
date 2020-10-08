@@ -70,7 +70,7 @@ while not is_done():
 if debug: print(bars)
 
 
-print(output)
+print(output[:-1])
 
 
 
