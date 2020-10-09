@@ -7,6 +7,8 @@ let n = 0.01
 
 // Animation Start
 
+// Todo animating bug dare 
+// back o front ------------------------
 
 function emptyAnimation() {
     return {
@@ -20,6 +22,7 @@ function emptyAnimation() {
 
 let animation = emptyAnimation()
 
+// from to
 function move(f, t) {
     if (bars[f].disks.length <= 0) {
         if (animation.state == 'animating') {}animation.state = 'done'
@@ -71,7 +74,6 @@ function animate() {
         bars[animation.target].disks.push(animation.object)
         animation = emptyAnimation()
     }
-    console.log('-')
 }
 // Animation End
 
@@ -113,5 +115,3 @@ function draw() {
     animate()
     
 }
-
-console.log('hey')

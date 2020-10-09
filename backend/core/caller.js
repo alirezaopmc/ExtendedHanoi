@@ -1,3 +1,3 @@
-const { execSync } = requires('execSync');
+const { execSync } = requires('execSync')
 
 // execSync('')
