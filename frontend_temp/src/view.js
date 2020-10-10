@@ -3,7 +3,7 @@ let sections = [];
 let scale = 10;
 let speed = 2;
 
-let n = 0.01;
+let n = 1
 
 let canvSection = document.getElementById('canvas');
 
@@ -89,7 +89,7 @@ function nextDisk() {
 function mousePressed() {
   sections.forEach((section) => {
     if (section.collision(mouseX, mouseY)) {
-      if (bars[section.i].push(nextDisk(), 'normal')) n++;
+      if (bars[section.i].push(n, 'normal')) n++;
     }
   });
 }
