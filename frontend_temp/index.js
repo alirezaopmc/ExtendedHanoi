@@ -16,7 +16,7 @@ app.on('ready', () => {
     },
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-  mainWindow.removeMenu();
+  //mainWindow.removeMenu();
 
   mainWindow.on('closed', () => app.quit());
 });
