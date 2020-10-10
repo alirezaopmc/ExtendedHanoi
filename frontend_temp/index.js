@@ -16,7 +16,8 @@ app.on('ready', () => {
     },
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-  mainWindow.removeMenu();
+  mainWindow.resizable = true
+  // mainWindow.removeMenu();
 
   mainWindow.on('closed', () => app.quit());
 });

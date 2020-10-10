@@ -2,8 +2,9 @@ class Disk {
     constructor(radius) {
         this.x = 0
         this.y = 0
-        this.width = radius
+        this.width = radius * 7 + 15
         this.height = 20
+        this.n = radius
 
         this.R = random(255)
         this.G = random(80, 220)
