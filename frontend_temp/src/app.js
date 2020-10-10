@@ -28,8 +28,9 @@ startBtn.addEventListener('click', async (e) => {
   });
 
   diskArray.forEach((disk, i) => {
-    hanoiString += `${disk.width}${disk.isLastBar ? '-' : ''}`;
+    hanoiString += `${disk.width}${disk.isLastBar ? '-' : ','}`;
   });
+  hanoiString = hanoiString.slice(0, hanoiString.length - 1);
   console.log(hanoiString);
 
   const response = await fetch('http://localhost:3000', {
