@@ -40,6 +40,7 @@ class Bar {
         this.disks = []
         this.x = x
         this.y = y
+        this.numDisksInBar = 0
     }
 
     init(disks) {
@@ -84,6 +85,7 @@ class Bar {
     }
 
     render() {
+        this.numDisksInBar = this.disks.length
         line(this.x, this.y, this.x, 650 - this.y)
         this.update()
         this.disks.forEach(disk => disk.render())
