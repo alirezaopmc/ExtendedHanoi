@@ -3,7 +3,7 @@ let sections = [];
 let scale = 10;
 let speed = 2;
 
-let n = 1
+let n = 1;
 
 let canvSection = document.getElementById('canvas');
 
@@ -102,9 +102,9 @@ function setup() {
   sections.push(new Section(600, 300, 380, 580, 1));
   sections.push(new Section(1000, 300, 380, 580, 2));
 
-  bars.push(new Bar(200, 70));
-  bars.push(new Bar(600, 70));
-  bars.push(new Bar(1000, 70));
+  bars.push(new Bar(200, 70, 0));
+  bars.push(new Bar(600, 70, 1));
+  bars.push(new Bar(1000, 70, 2));
 
   // bars[0].init([180, 200, 170, 160, 150])
   // bars[2].init([180, 140])
