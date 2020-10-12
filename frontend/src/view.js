@@ -15,6 +15,7 @@ let canvSection = document.getElementById('canvas');
 function emptyAnimation() {
   return {
     state: 'stop',
+    isStep: false,
     object: undefined,
     source: -1,
     target: -1,
