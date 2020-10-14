@@ -1,7 +1,26 @@
 let bars = [];
 let sections = [];
 let scale = 10;
-let speed = 2;
+
+let indexOfSpeed = 2
+let speeds = [1, 2, 5, 10]
+let speed = speeds[indexOfSpeed]
+
+function changeSpeed(type) {
+  if (type == 'increase') {
+    if (indexOfSpeed + 1 < speeds.length) {
+      indexOfSpeed += 1
+    }
+  }
+
+  if (type == 'decrease') {
+    if (indexOfSpeed - 1 >= 0) {
+      indexOfSpeed -= 1
+    }
+  }
+
+  speed = speeds[indexOfSpeed]
+}
 
 let n = 1;
 
@@ -35,16 +54,26 @@ function move(f, t) {
   }
 
   let disk = bars[f].pop();
-  let other = bars[t].disks.slice(-1)[0];
 
+  
   let pointA = {
     x: disk.x,
     y: disk.y,
   };
-
+  
+  
+  let other = undefined;
+  if (bars[t].length <= 0) {
+    other = new Disk(0, 0)
+    other.x = bars[t].x
+    other.y = 650 - bars[t].y - disk.height / 2
+  } else {
+    other = bars[t].disks.slice(-1)[0];
+  }
+  
   let pointB = {
     x: other.x,
-    y: other.y + other.height / 2 + disk.height / 2,
+    y: other.y - other.height / 2 - disk.height / 2,
   };
 
   animation.state = 'animating';
@@ -52,15 +81,15 @@ function move(f, t) {
   animation.source = f;
   animation.target = t;
 
-  for (let i = 0; i < Math.abs(pointA.y - 45) / 2; i++) {
+  for (let i = 0; i < Math.abs(pointA.y - 30) / speed; i++) {
     animation.commands.push('up');
   }
 
-  for (let i = 0; i < Math.abs(pointA.x - pointB.x) / 2; i++) {
+  for (let i = 0; i < Math.abs(pointA.x - pointB.x) / speed; i++) {
     animation.commands.push(pointB.x - pointA.x > 0 ? 'right' : 'left');
   }
 
-  for (let i = 0; i < Math.abs(pointB.y - 45) / 2; i++) {
+  for (let i = 0; i < Math.abs(pointB.y - 30) / speed; i++) {
     animation.commands.push('down');
   }
 
@@ -70,7 +99,7 @@ function move(f, t) {
 function animate() {
   if (animation.state == 'animating') {
     if (animation.commands.length > 0) {
-      animation.object.move(animation.commands.pop());
+      animation.object.move(animation.commands.pop(), speed);
       animation.object.render();
     } else {
       animation.state = 'done';
@@ -88,6 +117,7 @@ function nextDisk() {
 }
 
 function mousePressed() {
+  if (animation.state == 'animating') return
   sections.forEach((section) => {
     if (section.collision(mouseX, mouseY)) {
       if (bars[section.i].push(n, 'normal')) n++;

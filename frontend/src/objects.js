@@ -11,19 +11,19 @@ class Disk {
     this.B = random(220, 250);
   }
 
-  move(dir) {
+  move(dir, speed) {
     switch (dir) {
       case 'right':
-        this.x += 2;
+        this.x += speed;
         break;
       case 'left':
-        this.x -= 2;
+        this.x -= speed;
         break;
       case 'up':
-        this.y += 2;
+        this.y += speed;
         break;
       case 'down':
-        this.y -= 2;
+        this.y -= speed;
         break;
       default:
         break;
