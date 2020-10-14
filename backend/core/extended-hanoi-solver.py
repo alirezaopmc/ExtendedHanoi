@@ -14,6 +14,9 @@ if len(arguments) > 1:
 # hanoiString = '3,4-1,2-5,6'.split('-')
     
 bars = list(map(lambda r: list(map(int, r.split(','))), hanoiString))
+bars[0].reverse()
+bars[1].reverse()
+bars[2].reverse()
 for x in bars:
     x.reverse()
 n = len(bars[0]) + len(bars[1]) + len(bars[2])
@@ -65,7 +68,7 @@ while not is_done():
     found = update()
     found_at = look_up()
     move_stack(current_bar, found_at, found)
-    found = update()
+    # found = update()
 
 if debug: print(bars)
 

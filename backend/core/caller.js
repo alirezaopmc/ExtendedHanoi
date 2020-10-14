@@ -5,6 +5,7 @@ const solve = (hanoi) => {
   let linuxCommand = `python3 ${__dirname}/extended-hanoi-solver.py '${hanoi}'`;
 
   // const result = '12,02,21,02';
+  console.log(hanoi);
   let result = execSync(linuxCommand).toString().replace('\n', ''); //'12,02,21,02';
   return result;
 };
