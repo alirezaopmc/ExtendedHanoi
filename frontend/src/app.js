@@ -1,6 +1,7 @@
 const startBtn = document.getElementById('start');
 const stepBtn = document.getElementById('step');
 const resetBtn = document.getElementById('reset');
+const speedInput = document.getElementById('speed');
 
 let solvedStrArr = '';
 let currStep = 0;
@@ -60,8 +61,31 @@ async function makeRequest() {
 }
 
 function moveDisk(from, to, callback) {
-  move(from, to);
+  move(from, to, parseValue(speedInput.value));
   solvedStrArr.shift();
+}
+
+function parseValue(value) {
+  switch (value) {
+    case 1:
+      return 1;
+      break;
+    case 2:
+      return 2;
+      break;
+    case 3:
+      return 3;
+      break;
+    case 4:
+      return 5;
+      break;
+    case 5:
+      return 5;
+      break;
+    default:
+      return 10;
+      break;
+  }
 }
 
 document.addEventListener('animation-end', () => {
