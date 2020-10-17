@@ -9,13 +9,13 @@ class Disk {
     this.color = 255 * (1 - this.n % 2);
   }
 
-  move(dir, speed) {
+  move(dir, speed, targetX, diskX) {
     switch (dir) {
       case 'right':
-        this.x += speed;
+        this.x += min(speed, Math.abs(targetX - diskX));
         break;
       case 'left':
-        this.x -= speed;
+        this.x -= min(speed, Math.abs(targetX - diskX));
         break;
       case 'up':
         this.y -= speed;
