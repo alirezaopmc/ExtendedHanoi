@@ -67,7 +67,7 @@ function moveDisk(from, to) {
 }
 
 speedInput.addEventListener('change', () => {
-  animationSpeed = speedInput.value
+  animationSpeed = speedInput.value * 10;
 })
 
 document.addEventListener('animation-end', () => {
