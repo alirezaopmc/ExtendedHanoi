@@ -66,7 +66,7 @@ class Bar {
       diff += disk.height;
     });
 
-    this.freeY = 650 - this.y -  diff;
+    this.freeY = 650 - this.y - diff;
   }
 
   pushDisk(disk) {
@@ -160,6 +160,7 @@ class DiskAnimation {
 class AnimationHandler {
   constructor() {
     this.state = 'free';
+    this.isStep = false;
     this.animations = [];
   }
 

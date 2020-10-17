@@ -10,6 +10,7 @@ let diskArray = [];
 let isSolved = false;
 
 startBtn.addEventListener('click', async (e) => {
+  console.log('start')
   if (!isSolved) {
     await makeRequest();
     stepBtn.setAttribute('disabled', true);
@@ -60,36 +61,17 @@ async function makeRequest() {
   }
 }
 
-function moveDisk(from, to, callback) {
-  move(from, to, parseValue(speedInput.value));
+function moveDisk(from, to) {
+  move(from, to);
   solvedStrArr.shift();
 }
 
-function parseValue(value) {
-  switch (value) {
-    case 1:
-      return 1;
-      break;
-    case 2:
-      return 2;
-      break;
-    case 3:
-      return 3;
-      break;
-    case 4:
-      return 5;
-      break;
-    case 5:
-      return 5;
-      break;
-    default:
-      return 10;
-      break;
-  }
-}
+speedInput.addEventListener('change', () => {
+  animationSpeed = speedInput.value
+})
 
 document.addEventListener('animation-end', () => {
-  if (animation.isStep) {
+  if (animator.isStep) {
     stepBtn.removeAttribute('disabled');
     return console.log('enable');
   }
@@ -110,7 +92,7 @@ document.addEventListener('animation-end', () => {
   }
 });
 
-document.addEventListener('animation-end-step', () => {});
+document.addEventListener('animation-end-step', () => { });
 
 resetBtn.addEventListener('click', () => {
   location.reload();
@@ -122,13 +104,13 @@ stepBtn.addEventListener('click', async () => {
     moveDisk(solvedStrArr[0].split('')[0], solvedStrArr[0].split('')[1]);
     console.log('disable');
     stepBtn.setAttribute('disabled', true);
-    return (animation.isStep = true);
+    return (animator.isStep = true);
   }
   if (solvedStrArr.length) {
     moveDisk(solvedStrArr[0].split('')[0], solvedStrArr[0].split('')[1]);
     console.log('disable');
     stepBtn.setAttribute('disabled', true);
-    return (animation.isStep = true);
+    return (animator.isStep = true);
   }
   console.log('disable');
   startBtn.setAttribute('disabled', true);
